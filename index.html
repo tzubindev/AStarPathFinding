@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <script src="Space.js" defer></script>
+        <script src="MapHandler.js" defer></script>
+        <script src="A_Star.js"></script>
+        <script src="main.js" defer></script>
+        <title>Explore</title>
+    </head>
+    <style>
+        .c-cols-rows {
+            grid-template-rows: repeat(40, minmax(0, 1fr));
+            grid-template-columns: repeat(40, minmax(0, 1fr));
+        }
+        /* width */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #cacaca;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #999;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+
+        * {
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+        }
+    </style>
+    <body
+        class="flex bg-zinc-950 p-5 overflow-x-hidden h-screen max-h-screen max-w-screen w-screen"
+        style="font-family: 'Courier New', Courier, monospace"
+    >
+        <div id="main-boundary" class="flex items-center justify-center w-4/5">
+            <div
+                id="grid-container"
+                class="grid c-cols-rows gap-0.5"
+                style="height: 800px; width: 800px"
+            ></div>
+        </div>
+
+        <div class="ml-2 flex items-center text-white justify-center grow">
+            <div>
+                <div class="mb-4 grid grid-cols-2">
+                    <b>Current</b>
+                    <div id="colour-span" class="rounded-md"></div>
+                </div>
+                <div class="grid grid-cols-3">
+                    <div class="col-span-2">Blank</div>
+                    <div class="flex justify-center items-center">
+                        <div
+                            class="w-3 h-3 rounded-sm bg-white hover:cursor-pointer"
+                            onclick="changeCurrent(SpaceType.Blank.id)"
+                        ></div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3">
+                    <div class="col-span-2">Hinder</div>
+                    <div class="flex justify-center items-center">
+                        <div
+                            class="w-3 h-3 rounded-sm bg-red-600 hover:cursor-pointer"
+                            onclick="changeCurrent(SpaceType.Hinder.id)"
+                        ></div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3">
+                    <div class="col-span-2">Source</div>
+                    <div class="flex justify-center items-center">
+                        <div
+                            class="w-3 h-3 rounded-sm bg-green-600 hover:cursor-pointer"
+                            onclick="changeCurrent(SpaceType.Source.id)"
+                        ></div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3">
+                    <div class="col-span-2">Destination</div>
+                    <div class="flex justify-center items-center">
+                        <div
+                            class="w-3 h-3 rounded-sm bg-blue-600 hover:cursor-pointer"
+                            onclick="changeCurrent(SpaceType.Destination.id)"
+                        ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
